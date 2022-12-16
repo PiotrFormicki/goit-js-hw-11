@@ -1,18 +1,10 @@
 import fetchImages from './js/fetch-images';
-// import cardTemplate from '../templates/card-template.hbs';
-import {
-  Notify
-} from 'notiflix/build/notiflix-notify-aio';
+
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-// import throttle from 'lodash.throttle';
 
-const {
-  searchForm,
-  gallery,
-  loadMoreBtn,
-  endCollectionText
-} = {
+const { searchForm, gallery, loadMoreBtn, endCollectionText } = {
   searchForm: document.querySelector('.search-form'),
   gallery: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.load-more'),
@@ -30,18 +22,18 @@ let currentHits = 0;
 let searchQuery = '';
 
 function createImageEl(hits) {
-
   const markup = hits
-    .map(({
-      webformatURL,
-      largeImageURL,
-      tags,
-      likes,
-      views,
-      comments,
-      downloads
-    }) => {
-      return `
+    .map(
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => {
+        return `
             <a href="${largeImageURL}" class="photo-card">
              <img src="${webformatURL}" alt="${tags}" loading = "lazy"  class="photo-image" />
                 <div class="info" style= "display: flex">
@@ -59,7 +51,8 @@ function createImageEl(hits) {
                     </p>
                 </div>
                </a> `;
-    })
+      }
+    )
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
 
@@ -94,9 +87,7 @@ async function onSubmitSearchForm(e) {
       lightbox.refresh();
       endCollectionText.classList.add('is-hidden');
 
-      const {
-        height: cardHeight
-      } = document
+      const { height: cardHeight } = document
         .querySelector('.gallery')
         .firstElementChild.getBoundingClientRect();
 
@@ -108,11 +99,12 @@ async function onSubmitSearchForm(e) {
 
     if (response.totalHits === 0) {
       gallery.innerHTML = '';
-      Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+      Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
       loadMoreBtn.classList.add('is-hidden');
       endCollectionText.classList.add('is-hidden');
     }
-
   } catch (error) {
     console.log(error);
   }
