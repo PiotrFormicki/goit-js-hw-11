@@ -125,3 +125,5 @@ async function onClickLoadMoreBtn() {
     endCollectionText.classList.remove('is-hidden');
   }
 }
+//dodatkowe zadanie
+const changeScrollMode = document.querySelector('#type-change');
