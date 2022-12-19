@@ -22,7 +22,13 @@ ul {
   padding: 0;
   list-style: none;
 }
-
+#mode-button {
+  margin-right: 10px;
+  border-radius: 5px;
+  height: 40px;
+  outline: none;
+  border: none;
+}
 img {
   display: block;
   max-width: 100%;

@@ -3,6 +3,8 @@ import fetchImages from './js/fetch-images';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import SmoothScroll from 'smoothscroll-for-websites';
+import Notiflix from 'notiflix';
 
 const { searchForm, gallery, loadMoreBtn, endCollectionText } = {
   searchForm: document.querySelector('.search-form'),
@@ -126,4 +128,3 @@ async function onClickLoadMoreBtn() {
   }
 }
 //dodatkowe zadanie
-const changeScrollMode = document.querySelector('#type-change');
